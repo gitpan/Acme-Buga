@@ -1,10 +1,11 @@
-use strict;
-use warnings;
-
 package Acme::Buga;
 # ABSTRACT: Buga buga text encode
 
-our $VERSION = '1.00';
+use strict;
+use warnings;
+
+# original idea from @PACMAN, thank you man!
+our $VERSION = '0.002';
 
 use Convert::BaseN;
 
@@ -50,12 +51,10 @@ sub decode {
 
 
 sub buga {
-    my $value = shift;
-    return __PACKAGE__->new(value => $value);
+    return __PACKAGE__->new(value => $_[0]);
 }
 
 1;
-
 __END__
 
 =encoding utf8
@@ -64,17 +63,35 @@ __END__
 
 Acme::Buga - Buga text encoding
 
+
 =head1 SYNOPSIS
 
     use Acme::Buga;
 
+    # Default
     my $b = Acme::Buga->new;
+    say $b->encode('Test');
 
-    print $b->encode('Test');
+    # Alternative constructor
+    use Acme::Buga 'buga';
+    say buga('Another Test')->encode;
+
 
 =head1 DESCRIPTION
 
 This module encode any text into a Buga buga bUga string value.
+
+
+=head1 FUNCTIONS
+
+Acme::Buga exports the following functions...
+
+=head2 buga
+
+    my $obj = buga('Daniel Vinciguerra');
+
+Alternative constructor that returns a Acme::Buga object.
+
 
 =head1 METHODS
 
@@ -105,7 +122,7 @@ Decode string into buga text
 
 =head1 AUTHOR
 
-    Daniel Vinciguerra <daniel.vinciguerra@bivee.com.br>
+Daniel Vinciguerra <daniel.vinciguerra@bivee.com.br>
 
 
 =head1 COPYRIGHT AND LICENSE
@@ -114,7 +131,4 @@ This software is copyright (c) 2014 by Daniel Vinciguerra.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-
-
 

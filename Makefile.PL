@@ -19,15 +19,35 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "Acme::Buga",
-  "PREREQ_PM" => {},
-  "VERSION" => "0.001",
+  "PREREQ_PM" => {
+    "Convert::BaseN" => 0,
+    "Exporter" => 0,
+    "constant" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "TEST_REQUIRES" => {
+    "FindBin" => 0,
+    "Test::More" => 0,
+    "lib" => 0
+  },
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
 
-my %FallbackPrereqs = ();
+my %FallbackPrereqs = (
+  "Convert::BaseN" => 0,
+  "Exporter" => 0,
+  "FindBin" => 0,
+  "Test::More" => 0,
+  "constant" => 0,
+  "lib" => 0,
+  "strict" => 0,
+  "warnings" => 0
+);
 
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
