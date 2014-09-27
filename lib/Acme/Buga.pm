@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 # original idea from @PACMAN, thank you man!
-our $VERSION = '0.002';
+our $VERSION = '1.002';
 
 use Convert::BaseN;
 
